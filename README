@@ -1,0 +1,25 @@
+# MIT License
+# Feel free to use it however you like. 
+# Links back to http://github.com/thirdreplicator/troggle are appreciated.
+# 
+ 
+.troggle( model_string, attribute_string, [plural form of model string] )
+
+Description: This JQuery plugin is for toggling a Ruby on Rails 2.x attribute
+It assumes Rails 2.x with authenticity token checking on.
+It should work for any model and attribute with a standard REST update function.
+For models with irregular plural forms, the irregular plural can be passed in
+as a third argument.  
+
+Required fields set in the Rails view:
+ 
+AUTH_TOKEN: the rails authenticity token must be set in a javascript tag. 
+iid:   the integer id of the model instance must be set on the displaying div tag
+value: model.attribute must be set on the displaying div tag
+
+Example:
+ <script type='javascript'>var AUTH_TOKEN = #{form_authenticity_token.inspect};</script>
+ <div class="toggle_user_publish" iid='3' value='true'></div>  
+ <div class="toggle_user_publish" iid='4' value='false'></div>  
+ $('.toggle_user_publish').troggle("user", "publish");
+
