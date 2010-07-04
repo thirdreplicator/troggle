@@ -11,15 +11,31 @@ It should work for any model and attribute with a standard REST update function.
 For models with irregular plural forms, the irregular plural can be passed in
 as a third argument.  
 
+Just cut and paste the contents of troggle.js into your application.js and follow
+the example below.
+
 Required fields set in the Rails view:
  
-AUTH_TOKEN: the rails authenticity token must be set in a javascript tag. 
+AUTH_TOKEN: The rails authenticity token must be set in a javascript tag. 
 iid:   the integer id of the model instance must be set on the displaying div tag
 value: model.attribute must be set on the displaying div tag
 
-Example:
+HTML Example:
  <script type='javascript'>var AUTH_TOKEN = #{form_authenticity_token.inspect};</script>
  <div class="toggle_user_publish" iid='3' value='true'></div>  
  <div class="toggle_user_publish" iid='4' value='false'></div>  
  $('.toggle_user_publish').troggle("user", "publish");
+
+HAML Example:
+:javascript
+  var AUTH_TOKEN = #{form_authenticity_token.inspect}; #Required
+  $(function() {
+    $('.toggle_published').troggle("user", "publish");
+  });
+- @users.each do |user|
+  %div{ :class => 'toggle_published', \
+        :id => "user_publish_#{user.id}", \
+        :iid => "#{user.id}",                          # Required \
+        :value=> "#{user.publish}" }                   # Required 
+  = user_publish_string(user)
 
