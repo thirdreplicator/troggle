@@ -5,11 +5,11 @@
  
 .troggle( model_string, attribute_string, [plural form of model string] )
 
-Description: This JQuery plugin is for toggling a Ruby on Rails 2.x attribute
-It assumes Rails 2.x with authenticity token checking on.
-It should work for any model and attribute with a standard REST update function.
-For models with irregular plural forms, the irregular plural can be passed in
-as a third argument.  
+Description: This JQuery plugin is for toggling a Ruby on Rails 2.x attribute using
+AJAX/jQuery with a standard fadeOut and fadeIn effect.  It assumes Rails 2.x with
+authenticity token using format.json channel.  This plugin should work for any model
+and attribute with a standard REST update function.  For models with irregular plural
+forms, the irregular plural can be passed in as a third argument.
 
 Just cut and paste the contents of troggle.js into your application.js and follow
 the example below.
